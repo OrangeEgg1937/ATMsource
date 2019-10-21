@@ -4,13 +4,11 @@
 public class ATMCaseStudy
 {
    // main method creates and runs the ATM
-   //TESTING HELLO WORLD ???
    public static void main( String[] args )
    {
       ATM theATM = new ATM();    
       theATM.run();
    } // end main 
-//new2
 } // end class ATMCaseStudy 
 
 
