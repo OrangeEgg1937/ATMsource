@@ -1,7 +1,7 @@
 // ATM.java
 // Represents an automated teller machine
 
-public class ATM 
+public class ATM                                                                //Edited the body
 {
    private boolean userAuthenticated; // whether user is authenticated
    private int currentAccountNumber; // current user's account number
@@ -15,7 +15,8 @@ public class ATM
    private static final int BALANCE_INQUIRY = 1;
    private static final int WITHDRAWAL = 2;
    private static final int DEPOSIT = 3;
-   private static final int EXIT = 4;
+   private static final int TRANSFER = 4;                                       //Added
+   private static final int EXIT = 5;                                           //Edited
 
    // no-argument ATM constructor initializes instance variables
    public ATM() 
@@ -72,7 +73,7 @@ public class ATM
    } // end method authenticateUser
 
    // display the main menu and perform transactions
-   private void performTransactions() 
+   private void performTransactions()                                           //Edited the body
    {
       // local variable to store transaction currently being processed
       Transaction currentTransaction = null;
@@ -92,6 +93,7 @@ public class ATM
             case BALANCE_INQUIRY: 
             case WITHDRAWAL: 
             case DEPOSIT:
+            case TRANSFER:                                                      //Added
 
                // initialize as new object of chosen type
                currentTransaction = 
@@ -112,13 +114,14 @@ public class ATM
    } // end method performTransactions
    
    // display the main menu and return an input selection
-   private int displayMainMenu()
+   private int displayMainMenu()                                                //Edited the body
    {
       screen.displayMessageLine( "\nMain menu:" );
       screen.displayMessageLine( "1 - View my balance" );
       screen.displayMessageLine( "2 - Withdraw cash" );
       screen.displayMessageLine( "3 - Deposit funds" );
-      screen.displayMessageLine( "4 - Exit\n" );
+      screen.displayMessageLine( "4 - Transfer funds" );                        //Added
+      screen.displayMessageLine( "5 - Exit\n" );                                //Edited
       screen.displayMessage( "Enter a choice: " );
       return keypad.getInput(); // return user's selection
    } // end method displayMainMenu
@@ -142,6 +145,10 @@ public class ATM
          case DEPOSIT: // create new Deposit transaction
             temp = new Deposit( currentAccountNumber, screen, 
                bankDatabase, keypad, depositSlot );
+            break;
+         case TRANSFER: // create new Transfer transaction                      //Added
+            temp = new Transfer( currentAccountNumber, screen, 
+               bankDatabase, keypad );
             break;
       } // end switch
 
