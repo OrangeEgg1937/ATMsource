@@ -15,11 +15,40 @@ public class Keypad
    // return an integer value entered by user 
    public int getInput()
    {
-      return input.nextInt(); // we assume that user enters an integer
-   } // end method getInput
-   public void skipline() {
+        boolean check; // error flag
+        int input = 0; // the input value
+      do { // data validation check
+         try {
+            check = false;
+            input = this.input.nextInt(); // get the input value
+         } catch (Exception e) {
+            System.out.print("ERROR:Invalid input, please input an integer: "); //error message 
+            skipErrorInput();
+            check = true;
+         }
+      } while (check);
+      return input;
+   }// end method getInput
+
+   public double getAmount() {
+      boolean check; // error flag
+      double input = 0; // the input value
+      do { // data validation check
+         try {
+            check = false;
+            input = this.input.nextDouble(); // get the input value
+         } catch (Exception e) {
+            System.out.print("ERROR:Invalid input, please input again: "); //error message 
+            skipErrorInput();
+            check = true;
+         }
+      } while (check);
+      return input; // we assume that user enters an integer
+   }// end method getAmount
+
+   private void skipErrorInput() { // skip invalid input
 	   input.nextLine();
-   }
+   }// end method skipErrorInput
 } // end class Keypad  
 
 
