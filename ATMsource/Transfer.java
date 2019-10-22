@@ -46,7 +46,7 @@ public class Transfer extends Transaction
 
             if (transferAcctNum != CANCELED)
             {
-                /* Confirm acct num / Re-enter / Cancel transaction*/
+                /* Confirm acct num / Re-enter / Cancel transaction */
                 do 
                 {
                     screen.displayMessageLine("\nThe transfer account number you entered is: " + transferAcctNum);
