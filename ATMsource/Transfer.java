@@ -63,7 +63,7 @@ public class Transfer extends Transaction
                                 /* 2. Enter transfer amount */
                                 screen.displayMessageLine("\nPlease enter the transfer amount: ");
                                 screen.displayMessageLine("\n0 - Cancel transaction\n");
-                                amount = keypad.getInput();
+                                amount = keypad.getAmount();
                                 
                                 if (amount != CANCELED)
                                 {
