@@ -39,7 +39,7 @@ public class Transfer extends Transaction
             screen.displayMessageLine("\n0 - Cancel transaction\n");
             transferAcctNum = keypad.getInput();
 
-            if (transferAcctNum != CANCELED)
+            if (transferAcctNum != CANCELED )
             {
                 /* Confirm acct num / Re-enter / Cancel transaction*/
                 do 
