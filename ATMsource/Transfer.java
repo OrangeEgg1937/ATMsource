@@ -38,6 +38,11 @@ public class Transfer extends Transaction
             screen.displayMessageLine("\nPlease enter the transfer account number: ");
             screen.displayMessageLine("\n0 - Cancel transaction\n");
             transferAcctNum = keypad.getInput();
+            if (transferAcctNum == super.getAccountNumber())
+            {
+                screen.displayMessageLine("\nYou are not allowed to transfer to your own account.");
+                continue;
+            }
 
             if (transferAcctNum != CANCELED )
             {
