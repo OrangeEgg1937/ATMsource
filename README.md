@@ -20,12 +20,3 @@
 - [ ] Remove the deposit function from the existing system
 - [X] [*Debug*] Add a new function – transfer (for transferring fund from one bank account to another
       bank account)
-      
-# Things to do (extra)
-- [ ] 額外功能
-- [ ] 對外幣
-- [ ] 繳費
-- [ ] 轉帳(跨行要手續費)
-- [ ] 轉密碼
-- [ ] 戶口紀錄
-- [ ] 手續費
