@@ -14,7 +14,9 @@ public class SavingAccount extends Account {
 		interestRate = rate;
 	}
 	
-	public void annualInterest() {
-		credit(getTotalBalance() * interestRate);
+	public void annualInterest(int timesOfInterest) {
+		for (int i = 1; i <= timesOfInterest; i++) {
+			credit(getTotalBalance() * interestRate);
+		}
 	}
 }
