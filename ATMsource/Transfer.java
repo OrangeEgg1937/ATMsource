@@ -42,7 +42,7 @@ public class Transfer extends Transaction
             {
                 screen.displayMessageLine("\nYou are not allowed to transfer to your own account.");
                 continue;
-            }
+            } // end if
 
             if (transferAcctNum != CANCELED)
             {
