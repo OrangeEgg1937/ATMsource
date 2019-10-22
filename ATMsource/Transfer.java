@@ -44,7 +44,7 @@ public class Transfer extends Transaction
                 continue;
             }
 
-            if (transferAcctNum != CANCELED )
+            if (transferAcctNum != CANCELED)
             {
                 /* Confirm acct num / Re-enter / Cancel transaction*/
                 do 
