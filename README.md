@@ -18,7 +18,7 @@
       annum); for Current Account, there is a specific attribute - overdrawn limit (with
       default value HK$10,000).
 - [ ] Remove the deposit function from the existing system
-- [X] Add a new function – transfer (for transferring fund from one bank account to another
+- [X] *Debug* Add a new function – transfer (for transferring fund from one bank account to another
       bank account)
       
 # Things to do (extra)
