@@ -38,14 +38,21 @@ public class Transfer extends Transaction
             screen.displayMessageLine("\nPlease enter the transfer account number: ");
             screen.displayMessageLine("\n0 - Cancel transaction\n");
             transferAcctNum = keypad.getInput();
+            
             if (transferAcctNum == super.getAccountNumber())
             {
                 screen.displayMessageLine("\nYou are not allowed to transfer to your own account.");
                 continue;
             } // end if
-
+            
             if (transferAcctNum != CANCELED)
             {
+                if (bankDatabase.findUser(transferAcctNum) == false)
+                {
+                    screen.displayMessageLine("\nThe transfer account you entered does not exist.");
+                    continue;
+                } // end if
+                
                 /* Confirm acct num / Re-enter / Cancel transaction */
                 do 
                 {
@@ -64,7 +71,7 @@ public class Transfer extends Transaction
                                 screen.displayMessageLine("\nPlease enter the transfer amount: ");
                                 screen.displayMessageLine("\n0 - Cancel transaction\n");
                                 amount = keypad.getAmount();
-                                
+
                                 if (amount != CANCELED)
                                 {
                                     /* Check if user account has enough money */
@@ -85,7 +92,7 @@ public class Transfer extends Transaction
                                                 // update the account involved to reflect transfer
                                                 bankDatabase.debit(getAccountNumber(), amount);
                                                 fundTransferred = true; // fund was transferred
-                                                
+
                                                 /* 4. Prompt success or not + yes/no receipt */
                                                 screen.displayMessageLine("\nTransfer succeed. Do you need receipt?");
                                                 screen.displayMessageLine("\n1 - Yes");
@@ -131,7 +138,7 @@ public class Transfer extends Transaction
                         default:
                             screen.displayMessageLine("\nInvalid selection. Try again.");
                     } // end switch
-                } while (fundTransferred == false);
+                } while (fundTransferred == false && input != 2);
             } // end if
             else
             {
