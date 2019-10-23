@@ -1,7 +1,7 @@
 // Account.java
 // Represents a bank account
 
-public class Account 
+public abstract class Account 
 {
    private int accountNumber; // account number
    private int pin; // PIN for authentication

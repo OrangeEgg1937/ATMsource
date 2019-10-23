@@ -9,8 +9,8 @@ public class BankDatabase
    public BankDatabase()
    {
       accounts = new Account[ 2 ]; // just 2 accounts for testing
-      accounts[ 0 ] = new Account( 1, 1, 1000.0, 1200.0 );
-      accounts[ 1 ] = new Account( 98765, 56789, 200.0, 200.0 );  
+      accounts[ 0 ] = new SavingAccount( 1, 1, 1000.0, 1200.0 );
+      accounts[ 1 ] = new CurrentAccount( 98765, 56789, 200.0, 200.0 );  
    } // end no-argument BankDatabase constructor
    
    // retrieve Account object containing specified account number
@@ -73,6 +73,12 @@ public class BankDatabase
    {
       getAccount( userAccountNumber ).debit( amount );
    } // end method debit
+   
+   public String getAccountType( int userAccountNumber)
+   {
+      getAccount( userAccountNumber ).getType();
+   }
+   
 } // end class BankDatabase
 
 

@@ -1,10 +1,16 @@
 
 public class CurrentAccount extends Account {
 	private int overdrawnLimit = -10000;
+	private final String type = "Current";
 	
 	CurrentAccount(int theAccountNumber, int thePIN, double theAvailableBalance, double theTotalBalance) {
 		super(theAccountNumber, thePIN, theAvailableBalance, theTotalBalance);
 	}
+	
+	public String gettype()
+	{
+		return type;
+	}	
 	
 	public double getCurrentAccount() {
 		return overdrawnLimit;
