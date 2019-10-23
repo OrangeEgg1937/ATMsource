@@ -28,8 +28,8 @@ public class SavingAccount extends Account {
 		if (now - lastModifiedTime >= 90000) {
 			temp = (now - lastModifiedTime)/90000; // find how many interest should be added
 			for (int i = 1; i <=temp ; i++) {
-				totalBalance = totalBalance * (1+interestRate) * 100; 
-				availableBalance = availableBalance * (1+interestRate) * 100; // add the profit to the balance
+				totalBalance = totalBalance * (1+interestRate); 
+				availableBalance = availableBalance * (1+interestRate); // add the profit to the balance
 			}
 			lastModifiedTime = now; // save the time
 		}
