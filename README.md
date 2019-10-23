@@ -35,3 +35,5 @@ TSANG Yat Fai
 It is more difficult than I thought of taking over a half-completed project (ATMsource) because the project might not be well-structured and optimized, which makes me hard to add new functions along with the existing ones. To resolve this problem, it is better to construct a UML class diagram first so you can have a visualized first look of the project, which gives you some ideas to clear your confusion.
 
 The other problem that I encountered was job duty assignment. This assignment 2 has part one and part two which has four sections. However, we have five groupmates and clearly, it is hard to distribute the job duties fairly. Therefore, we decided to do the jobs collaboratively and help each other in the meantime.
+
+Link: https://studenthkccpolyuedu-my.sharepoint.com/:w:/g/personal/18031710a_student_hkcc-polyu_edu_hk/EXRH0b6fE1ZAnku3jaPWWEABysLJLwjPcnDYRxrS63J7ow?e=hTQBCk
