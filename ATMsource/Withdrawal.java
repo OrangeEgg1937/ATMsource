@@ -61,7 +61,6 @@ public class Withdrawal extends Transaction
                   // instruct user to take cash
                   screen.displayMessageLine( 
                      "\nPlease take your cash now." );
-                  showMoney();
                } // end if
                else // cash dispenser does not have enough cash
                   screen.displayMessageLine( 
@@ -111,7 +110,7 @@ public class Withdrawal extends Transaction
          switch ( input )
          {
             case 1: // if the user chose a withdrawal amount 
-            case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
+            case 2: // (i.e., chose option 1, 2 or 3), return the
             case 3: // corresponding amount from amounts array
                userChoice = amounts[ input ]; // save user's choice
                break;       
@@ -121,7 +120,8 @@ public class Withdrawal extends Transaction
             default: // the user did not enter a value from 1-3 & 6
             	if (input%100==0) {
             	userChoice=input;
-            	}
+            	} // check whether the user's input is divisibe by 100
+		// make sure the ATM can output the money
             	else
             	{
                screen.displayMessageLine( 
@@ -133,30 +133,6 @@ public class Withdrawal extends Transaction
       return userChoice; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
    
-   public void showMoney()
-   {
-	   int temp=amount;
-	   int a=0,b=0,c=0;
-	  
-	   while(temp>=1000)
-	   {
-		 temp-=1000;
-		   a=a+1;
-	   }
-	   while(temp>=500)
-	   {
-		   temp-=500;
-		   b=b+1;
-	   }
-	   while(temp>=100)
-	   {
-		   temp-=100;
-		   c=c+1;
-	   }
-	  System.out.println("100 x "+c);
-	  System.out.println("500 x "+b);
-	  System.out.println("1000 x "+a);
-   }
 } // end class Withdrawal
 
 
