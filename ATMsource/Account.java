@@ -5,8 +5,11 @@ public abstract class Account
 {
    private int accountNumber; // account number
    private int pin; // PIN for authentication
-   private double availableBalance; // funds available for withdrawal
-   private double totalBalance; // funds available + pending deposits
+   protected double availableBalance; // funds available for withdrawal
+   protected double totalBalance; // funds available + pending deposits
+   protected boolean interestAvailable = false;
+   protected boolean overdrawnAvailable = false; 
+   protected long lastModifiedTime = System.currentTimeMillis();
 
    // Account constructor initializes attributes
    public Account( int theAccountNumber, int thePIN, 
@@ -40,25 +43,27 @@ public abstract class Account
    } // end method getTotalBalance
 
    // credits an amount to the account
-   public void credit( double amount )
-   {
-      totalBalance += amount; // add to total balance
-   } // end method credit
+   public abstract void credit( double amount );
 
    // debits an amount from the account
-   public void debit( double amount )
-   {
-      availableBalance -= amount; // subtract from available balance
-      totalBalance -= amount; // subtract from total balance
-   } // end method debit
+   public abstract void debit( double amount );
 
    // returns account number
    public int getAccountNumber()
    {
       return accountNumber;  
    } // end method getAccountNumber
-} // end class Account
 
+   // return false if the account does not support interest
+   public boolean hasInterest(){
+      return interestAvailable;
+   }
+
+   // return false if the account does not support overdrawn
+   public boolean hasOverdrawn(){
+      return overdrawnAvailable;
+   }
+} // end class Account
 
 /**************************************************************************
  * (C) Copyright 1992-2007 by Deitel & Associates, Inc. and               *

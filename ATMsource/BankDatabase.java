@@ -74,11 +74,6 @@ public class BankDatabase
       getAccount( userAccountNumber ).debit( amount );
    } // end method debit
    
-   public String getAccountType( int userAccountNumber)
-   {
-      getAccount( userAccountNumber ).getType();
-   }
-   
 } // end class BankDatabase
 
 

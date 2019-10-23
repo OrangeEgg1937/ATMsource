@@ -8,7 +8,7 @@ public class ATM
    private Screen screen; // ATM's screen
    private Keypad keypad; // ATM's keypad
    private CashDispenser cashDispenser; // ATM's cash dispenser
-   private DepositSlot depositSlot; // ATM's deposit slot
+ 
    private BankDatabase bankDatabase; // account information database
 
    // constants corresponding to main menu options
@@ -25,7 +25,7 @@ public class ATM
       screen = new Screen(); // create screen
       keypad = new Keypad(); // create keypad 
       cashDispenser = new CashDispenser(); // create cash dispenser
-      depositSlot = new DepositSlot(); // create deposit slot
+      
       bankDatabase = new BankDatabase(); // create acct info database
    } // end no-argument ATM constructor
 
@@ -139,10 +139,8 @@ public class ATM
             temp = new Withdrawal( currentAccountNumber, screen, 
                bankDatabase, keypad, cashDispenser );
             break; 
-         case DEPOSIT: // create new Deposit transaction
-            temp = new Deposit( currentAccountNumber, screen, 
-               bankDatabase, keypad, depositSlot );
-            break;
+
+           
          case TRANSFER: // create new Transfer transaction                      
             temp = new Transfer( currentAccountNumber, screen, 
                bankDatabase, keypad );
