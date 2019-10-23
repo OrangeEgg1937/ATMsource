@@ -41,6 +41,15 @@ public class BankDatabase
          return false; // account number not found, so return false
    } // end method authenticateUser
 
+    public boolean findUser(int userAccountNumber)
+    {
+        // attempt to retrieve the account with the account number
+        Account userAccount = getAccount( userAccountNumber );
+
+        // if account exists, return true. Else, return false
+        return userAccount != null;
+    } // end method findUser
+   
    // return available balance of Account with specified account number
    public double getAvailableBalance( int userAccountNumber )
    {
