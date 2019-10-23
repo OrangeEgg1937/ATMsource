@@ -87,9 +87,9 @@ public class Transfer extends Transaction
                                                 fundTransferred = true; // fund was transferred
                                                 
                                                 /* 4. Prompt success or not + yes/no receipt */
-                                                screen.displayMessageLine("\nTransfer succeed. Do you need receipt?\n");
+                                                screen.displayMessageLine("\nTransfer succeed. Do you need receipt?");
                                                 screen.displayMessageLine("\n1 - Yes");
-                                                screen.displayMessageLine("0 - No");
+                                                screen.displayMessageLine("0 - No\n");
                                                 input = keypad.getInput();
 
                                                 /* 5. Prompt user to take the debit card (and receipt) */
