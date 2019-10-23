@@ -17,6 +17,6 @@
       Saving Account has a specific attribute – interest rate (default value is 0.1% per
       annum); for Current Account, there is a specific attribute - overdrawn limit (with
       default value HK$10,000).
-- [ ] Remove the deposit function from the existing system
+- [X] Remove the deposit function from the existing system
 - [X] [*Debug*] Add a new function – transfer (for transferring fund from one bank account to another
       bank account)
