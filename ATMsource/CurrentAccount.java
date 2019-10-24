@@ -30,18 +30,6 @@ public class CurrentAccount extends Account {
 		super.totalBalance += amount; // add to the total balance
 	}
 	
-	//Overload
-	public double getAvailableBalance()
-   {
-      return availableBalance+avilableOverdrawnLimit;
-   } // end getAvailableBalance
-
-   //Overload
-   public double getTotalBalance()
-   {
-      return totalBalance+avilableOverdrawnLimit;
-   } // end method getTotalBalance
-
 	public void setOverdrawnLimit(double input) {
 		availableBalance = input;
 	}
