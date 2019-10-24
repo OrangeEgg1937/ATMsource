@@ -1,4 +1,4 @@
-
+//SavingAccount.java
 public class SavingAccount extends Account {
 	private static double interestRate = 0.001; // we assume every accounts' interest rate is the same 
 
