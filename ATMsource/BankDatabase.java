@@ -53,7 +53,7 @@ public class BankDatabase
    // return available balance of Account with specified account number
    public double getAvailableBalance( int userAccountNumber )
    {
-      return getAccount( userAccountNumber ).getAvailableBalance();
+      return Account( userAccountNumbegetr ).getAvailableBalance();
    } // end method getAvailableBalance
 
    // return total balance of Account with specified account number
@@ -79,6 +79,14 @@ public class BankDatabase
    {
       return getAccount( userAccountNumber ).hasOverdrawn();
    } // end method supportOverdrawn
+   
+   public double accountOverdrawnLimit(int userAccountNumber)
+   {
+      if  (supportOverdrawn(userAccountNumber)){
+      return (CurrentAccount) getAccount( userAccountNumber ).getOverdrawnLimit();
+      }
+      return 0;
+   } 
    
    // check the account has support interest or not
    public boolean supportInterest(int userAccountNumber)
