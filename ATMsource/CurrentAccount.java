@@ -33,6 +33,6 @@ public class CurrentAccount extends Account {
 	}
 
 	public double getOverdrawnLimit() {
-		return availableBalance;
+		return avilableOverdrawnLimit;
 	}
 }
