@@ -9,9 +9,7 @@ public class CurrentAccount extends Account {
 
 	@Override
 	public void debit( double amount) {
-		if (amount > (totalBalance + avilableOverdrawnLimit)) {
-			System.out.println("You cannot exceed the Overdrawn limit HK$" + avilableOverdrawnLimit);
-		} else if (amount > totalBalance) {
+		if (amount > totalBalance) {
 			super.availableBalance -= amount - avilableOverdrawnLimit; // subtract from available balance
 			super.totalBalance -= amount - avilableOverdrawnLimit; // subtract from total balance
 			avilableOverdrawnLimit = amount - avilableOverdrawnLimit;
