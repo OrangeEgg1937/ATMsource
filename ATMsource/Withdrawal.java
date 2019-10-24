@@ -35,16 +35,24 @@ public class Withdrawal extends Transaction
       // loop until cash is dispensed or the user cancels
       do
       {
+         // Display available overdraw amount if it is current account
+         if (bankDatabase.supportOverdrawn(getAccountNumber())){
+            screen.displayMessage("\nThis is current account, the available overdrawn limit: ");
+            screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
+         }
          // obtain a chosen withdrawal amount from the user 
          amount = displayMenuOfAmounts();
          
          // check whether user chose a withdrawal amount or canceled
          if ( amount != CANCELED )
          {
-        	 
-            // get available balance of account involved
-            availableBalance = 
-               bankDatabase.getAvailableBalance( getAccountNumber() );
+            
+            /* Check if user account has enough money */
+            if (bankDatabase.supportOverdrawn(getAccountNumber())){
+               if (bankDatabase.getAvailableBalance(getAccountNumber()) <= 0) {
+                  availableBalance = bankDatabase.accountOverdrawnLimit(getAccountNumber());
+               } else availableBalance = bankDatabase.accountOverdrawnLimit(getAccountNumber()) + bankDatabase.getAvailableBalance(getAccountNumber());
+           } else availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
       
             // check whether the user has enough money in the account 
             if ( amount <= availableBalance )
@@ -59,6 +67,7 @@ public class Withdrawal extends Transaction
                   cashDispensed = true; // cash was dispensed
 
                   // instruct user to take cash
+                  showMoney();
                   screen.displayMessageLine( 
                      "\nPlease take your cash now." );
                } // end if
@@ -119,7 +128,7 @@ public class Withdrawal extends Transaction
                break;
             default: // the user did not enter a value from 1-3 & 6
             	if (input%100==0) {
-            	userChoice=input;
+               userChoice=input;
             	} // check whether the user's input is divisibe by 100
 		// make sure the ATM can output the money
             	else
@@ -133,6 +142,33 @@ public class Withdrawal extends Transaction
       return userChoice; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
    
+   public void showMoney()	
+   {	
+	   int temp=amount;	
+	   int a=0,b=0,c=0;	
+
+	   while(temp>=1000)	
+	   {	
+		 temp-=1000;	
+		   a=a+1;	
+	   }	
+	   while(temp>=500)	
+	   {	
+		   temp-=500;	
+		   b=b+1;	
+	   }	
+	   while(temp>=100)	
+	   {	
+		   temp-=100;	
+		   c=c+1;	
+      }	
+     Screen screen = getScreen();
+     screen.displayMessageLine("You get: ");
+     screen.displayMessageLine("HKD$100 x "+Integer.toString(c));
+     screen.displayMessageLine("HKD$500 x "+Integer.toString(b));
+     screen.displayMessageLine("HKD$1000 x "+Integer.toString(a));
+   }
+
 } // end class Withdrawal
 
 

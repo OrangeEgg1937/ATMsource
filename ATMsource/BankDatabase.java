@@ -8,9 +8,14 @@ public class BankDatabase
    // no-argument BankDatabase constructor initializes accounts
    public BankDatabase()
    {
-      accounts = new Account[ 2 ]; // just 2 accounts for testing
-      accounts[ 0 ] = new SavingAccount( 1, 1, 1000.0, 1200.0 );
-      accounts[ 1 ] = new CurrentAccount( 98765, 56789, 200.0, 200.0 );  
+      accounts = new Account[ 7 ]; // 7 accounts for testing
+      accounts[ 0 ] = new SavingAccount( 1, 1, 10000.0, 10000.0 );
+      accounts[ 1 ] = new SavingAccount( 2, 1, 5000.0, 10000.0 );
+      accounts[ 2 ] = new SavingAccount( 3, 1, 0.0, 0.0 );
+      accounts[ 3 ] = new CurrentAccount( 4, 1, 10000.0, 10000.0 ); 
+      accounts[ 4 ] = new CurrentAccount( 5, 1, 5000.0, 10000.0 ); 
+      accounts[ 5 ] = new CurrentAccount( 6, 1, 0.0, 0.0 ); 
+      accounts[ 6 ] = new CurrentAccount( 7, 1, -5000.0, -5000.0 );  
    } // end no-argument BankDatabase constructor
    
    // retrieve Account object containing specified account number
@@ -53,7 +58,7 @@ public class BankDatabase
    // return available balance of Account with specified account number
    public double getAvailableBalance( int userAccountNumber )
    {
-      return Account( userAccountNumbegetr ).getAvailableBalance();
+      return getAccount( userAccountNumber ).getAvailableBalance();
    } // end method getAvailableBalance
 
    // return total balance of Account with specified account number
@@ -83,9 +88,8 @@ public class BankDatabase
    public double accountOverdrawnLimit(int userAccountNumber)
    {
       if  (supportOverdrawn(userAccountNumber)){
-      return (CurrentAccount) getAccount( userAccountNumber ).getOverdrawnLimit();
-      }
-      return 0;
+      return ((CurrentAccount) getAccount(userAccountNumber)).getOverdrawnLimit();
+      }else return 0;
    } 
    
    // check the account has support interest or not

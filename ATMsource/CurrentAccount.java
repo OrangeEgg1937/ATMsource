@@ -1,18 +1,29 @@
 
 public class CurrentAccount extends Account {
-	private double avilableOverdrawnLimit = 10000;
+	private static final double DEFAULT_OVERDRAWN_LIMIT = 10000.0;
+	private double avilableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;
 
+	// CurrentAccount constructor
 	CurrentAccount(int theAccountNumber, int thePIN, double theAvailableBalance, double theTotalBalance) {
+		// initialize superclass variables
 		super(theAccountNumber, thePIN, theAvailableBalance, theTotalBalance);
 		super.overdrawnAvailable = true;
-	}
+
+		// initialize available overdrawn limit
+		if (theAvailableBalance < 0) {
+			avilableOverdrawnLimit = avilableOverdrawnLimit + theAvailableBalance;
+		}
+		
+	}// end Transfer constructor
 
 	@Override
 	public void debit( double amount) {
-		if (amount > totalBalance) {
-			super.availableBalance -= amount - avilableOverdrawnLimit; // subtract from available balance
-			super.totalBalance -= amount - avilableOverdrawnLimit; // subtract from total balance
-			avilableOverdrawnLimit = amount - avilableOverdrawnLimit;
+		if (amount > super.totalBalance) {
+			super.availableBalance -= amount ; // subtract from available balance
+			super.totalBalance -= amount ; // subtract from total balance
+			if ((amount - availableBalance) >= avilableOverdrawnLimit) {	
+				avilableOverdrawnLimit = 0;	// set the overdrawn limit to 0
+			}else avilableOverdrawnLimit = avilableOverdrawnLimit - amount; // set the overdrawn limit
 		} else {
 			super.availableBalance -= amount; // subtract from available balance
 			super.totalBalance -= amount; // subtract from total balance
@@ -26,13 +37,16 @@ public class CurrentAccount extends Account {
 		} 
 		super.availableBalance += amount; // add to the available balance
 		super.totalBalance += amount; // add to the total balance
+		if ((avilableOverdrawnLimit) > DEFAULT_OVERDRAWN_LIMIT) {
+			avilableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;	// set the overdrawn limit to the default value
+		}
 	}
-	
-	public void setOverdrawnLimit(double input) {
+
+	public void setOverdrawnLimit(double input) { // set overdrawn limit
 		availableBalance = input;
 	}
 
-	public double getOverdrawnLimit() {
+	public double getOverdrawnLimit() { // get overdrawn limit
 		return avilableOverdrawnLimit;
 	}
 }

@@ -67,6 +67,10 @@ public class Transfer extends Transaction
                         {
                             do
                             {
+                                if (bankDatabase.supportOverdrawn(getAccountNumber())){
+                                    screen.displayMessage("\nThis is current account, the available overdrawn limit: ");
+                                    screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
+                                 }
                                 /* 2. Enter transfer amount */
                                 screen.displayMessageLine("\nPlease enter the transfer amount: ");
                                 screen.displayMessageLine("\n0 - Cancel transaction\n");
@@ -80,14 +84,18 @@ public class Transfer extends Transaction
                                 if (amount != CANCELED)
                                 {
                                     /* Check if user account has enough money */
-                                    if (bankDatabase.supportOverdrawn(getAccountNumber()){
-                                        availableBalance = (CurrentAccount) bankDatabase.accountOverdrawnLimit(getAccountNumber()) + bankDatabase.getAvailableBalance(getAccountNumber());
+                                    if (bankDatabase.supportOverdrawn(getAccountNumber())){
+                                        if (bankDatabase.getAvailableBalance(getAccountNumber()) < 0) {
+                                           availableBalance = bankDatabase.accountOverdrawnLimit(getAccountNumber());
+                                        } else availableBalance =  bankDatabase.accountOverdrawnLimit(getAccountNumber()) + bankDatabase.getAvailableBalance(getAccountNumber());
                                     } else availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
                                     
                                     if (amount <= availableBalance && amount > 0)
                                     {
                                         /* Confirm / Re-enter / Cancel transaction */
-                                        screen.displayMessageLine("\nThe transfer amount is: " + amount);
+                                        screen.displayMessageLine(" ");
+                                        screen.displayMessage("The transfer amount is: " );
+                                        screen.displayDollarAmount(amount);
                                         screen.displayMessageLine("\n1 - Confirm");
                                         screen.displayMessageLine("2 - Re-enter");
                                         screen.displayMessageLine("0 - Cancel transaction\n");
@@ -99,6 +107,7 @@ public class Transfer extends Transaction
                                                 /* 3. Process Transfer*/
                                                 // update the account involved to reflect transfer
                                                 bankDatabase.debit(getAccountNumber(), amount);
+                                                bankDatabase.credit(transferAcctNum, amount);
                                                 fundTransferred = true; // fund was transferred
 
                                                 /* 4. Prompt success or not + yes/no receipt */

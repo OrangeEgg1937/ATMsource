@@ -26,11 +26,17 @@ public class BalanceInquiry extends Transaction
          bankDatabase.getTotalBalance( getAccountNumber() );
       
       // display the balance information on the screen
+      
       screen.displayMessageLine( "\nBalance Information:" );
       screen.displayMessage( " - Available balance: " ); 
       screen.displayDollarAmount( availableBalance );
       screen.displayMessage( "\n - Total balance:     " );
       screen.displayDollarAmount( totalBalance );
+      // Display available overdraw amount if it is current account
+      if (bankDatabase.supportOverdrawn(getAccountNumber())){
+         screen.displayMessage("\n - Overdraw limit:    ");
+         screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
+      }
       screen.displayMessageLine( "" );
    } // end method execute
 } // end class BalanceInquiry
