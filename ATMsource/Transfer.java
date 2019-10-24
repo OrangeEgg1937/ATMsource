@@ -78,7 +78,7 @@ public class Transfer extends Transaction
                                 do {
                                 	amount = keypad.getAmount();
                                 	if (amount < 0)
-                                		screen.displayMessageLine("\nInvalid input. Try again.\n" );
+                                		screen.displayMessageLine("ERROR:Invalid input, please input again: " );
                                 }while (amount < 0);
                                 
                                 if (amount != CANCELED)
