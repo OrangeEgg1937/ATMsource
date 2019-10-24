@@ -19,11 +19,11 @@ public class CurrentAccount extends Account {
 	@Override
 	public void debit( double amount) {
 		if (amount > super.totalBalance) {
-			super.availableBalance -= amount ; // subtract from available balance
-			super.totalBalance -= amount ; // subtract from total balance
 			if ((amount - availableBalance) >= avilableOverdrawnLimit) {	
 				avilableOverdrawnLimit = 0;	// set the overdrawn limit to 0
 			}else avilableOverdrawnLimit = avilableOverdrawnLimit - amount; // set the overdrawn limit
+			super.availableBalance -= amount ; // subtract from available balance
+			super.totalBalance -= amount ; // subtract from total balance
 		} else {
 			super.availableBalance -= amount; // subtract from available balance
 			super.totalBalance -= amount; // subtract from total balance
@@ -32,7 +32,7 @@ public class CurrentAccount extends Account {
 
 	@Override
 	public void credit( double amount ) {
-		if (super.totalBalance < 0) { // checking whether the account is being in debt or not
+		if (super.totalBalance <= 0) { // checking whether the account is being in debt or not
 			avilableOverdrawnLimit = amount + avilableOverdrawnLimit; // set the overdrawn limit to the default value
 		} 
 		super.availableBalance += amount; // add to the available balance
