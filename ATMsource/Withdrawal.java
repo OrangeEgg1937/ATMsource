@@ -67,7 +67,6 @@ public class Withdrawal extends Transaction
                   cashDispensed = true; // cash was dispensed
 
                   // instruct user to take cash
-                  showMoney();
                   screen.displayMessageLine( 
                      "\nPlease take your cash now." );
                } // end if
@@ -142,33 +141,7 @@ public class Withdrawal extends Transaction
       return userChoice; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
    
-   public void showMoney()	
-   {	
-	   int temp=amount;	
-	   int a=0,b=0,c=0;	
-
-	   while(temp>=1000)	
-	   {	
-		 temp-=1000;	
-		   a=a+1;	
-	   }	
-	   while(temp>=500)	
-	   {	
-		   temp-=500;	
-		   b=b+1;	
-	   }	
-	   while(temp>=100)	
-	   {	
-		   temp-=100;	
-		   c=c+1;	
-      }	
-     Screen screen = getScreen();
-     screen.displayMessageLine("You get: ");
-     screen.displayMessageLine("HKD$100 x "+Integer.toString(c));
-     screen.displayMessageLine("HKD$500 x "+Integer.toString(b));
-     screen.displayMessageLine("HKD$1000 x "+Integer.toString(a));
-   }
-
+  
 } // end class Withdrawal
 
 
