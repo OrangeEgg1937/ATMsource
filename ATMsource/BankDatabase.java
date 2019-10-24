@@ -74,6 +74,18 @@ public class BankDatabase
       getAccount( userAccountNumber ).debit( amount );
    } // end method debit
    
+   // check the account has support overdrawn or not
+   public boolean supportOverdrawn(int userAccountNumber)
+   {
+      return getAccount( userAccountNumber ).hasOverdrawn();
+   } // end method supportOverdrawn
+   
+   // check the account has support interest or not
+   public boolean supportInterest(int userAccountNumber)
+   {
+      return getAccount( userAccountNumber ).hasInterest();
+   } // end method supportInterest
+   
 } // end class BankDatabase
 
 
