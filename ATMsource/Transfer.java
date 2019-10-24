@@ -80,8 +80,11 @@ public class Transfer extends Transaction
                                 if (amount != CANCELED)
                                 {
                                     /* Check if user account has enough money */
-                                    availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
-                                    if (amount <= availableBalance)
+                                    if (bankDatabase.supportOverdrawn(getAccountNumber()){
+                                        availableBalance = (CurrentAccount) bankDatabase.accountOverdrawnLimit(getAccountNumber()) + bankDatabase.getAvailableBalance(getAccountNumber());
+                                    } else availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
+                                    
+                                    if (amount <= availableBalance && amount > 0)
                                     {
                                         /* Confirm / Re-enter / Cancel transaction */
                                         screen.displayMessageLine("\nThe transfer amount is: " + amount);
