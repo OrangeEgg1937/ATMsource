@@ -1,7 +1,7 @@
 
 public class CurrentAccount extends Account {
 	private static final double DEFAULT_OVERDRAWN_LIMIT = 10000.0;
-	private double availableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;
+	private double avilableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;
 
 	// CurrentAccount constructor
 	CurrentAccount(int theAccountNumber, int thePIN, double theAvailableBalance, double theTotalBalance) {
@@ -11,7 +11,7 @@ public class CurrentAccount extends Account {
 
 		// initialize available overdrawn limit
 		if (theAvailableBalance < 0) {
-			availableOverdrawnLimit = availableOverdrawnLimit + theAvailableBalance;
+			avilableOverdrawnLimit = avilableOverdrawnLimit + theAvailableBalance;
 		}
 		
 	}// end Transfer constructor
@@ -19,9 +19,9 @@ public class CurrentAccount extends Account {
 	@Override
 	public void debit( double amount) {
 		if (amount > super.totalBalance) {
-			if ((amount - availableBalance) >= availableOverdrawnLimit) {	
-				availableOverdrawnLimit = 0;	// set the overdrawn limit to 0
-			}else availableOverdrawnLimit = availableOverdrawnLimit - amount; // set the overdrawn limit
+			if ((amount - availableBalance) >= avilableOverdrawnLimit) {	
+				avilableOverdrawnLimit = 0;	// set the overdrawn limit to 0
+			}else avilableOverdrawnLimit = avilableOverdrawnLimit - amount; // set the overdrawn limit
 			super.availableBalance -= amount ; // subtract from available balance
 			super.totalBalance -= amount ; // subtract from total balance
 		} else {
@@ -33,12 +33,12 @@ public class CurrentAccount extends Account {
 	@Override
 	public void credit( double amount ) {
 		if (super.totalBalance <= 0) { // checking whether the account is being in debt or not
-			availableOverdrawnLimit = amount + availableOverdrawnLimit; // set the overdrawn limit to the default value
+			avilableOverdrawnLimit = amount + avilableOverdrawnLimit; // set the overdrawn limit to the default value
 		} 
 		super.availableBalance += amount; // add to the available balance
 		super.totalBalance += amount; // add to the total balance
-		if ((availableOverdrawnLimit) > DEFAULT_OVERDRAWN_LIMIT) {
-			availableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;	// set the overdrawn limit to the default value
+		if ((avilableOverdrawnLimit) > DEFAULT_OVERDRAWN_LIMIT) {
+			avilableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;	// set the overdrawn limit to the default value
 		}
 	}
 
