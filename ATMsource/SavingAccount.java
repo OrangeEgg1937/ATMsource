@@ -39,20 +39,20 @@ public class SavingAccount extends Account {
 	public double getTotalBalance(){ // override getTotalBalance method from account
 		refresh();
 		return totalBalance;
-	}
+	}// end method getTotalBalance
 
 	@Override
 	public double getAvailableBalance(){ // override getAvailableBalance method from account
 		refresh();
 		return availableBalance;
-	}
+	}// end method getAvailableBalance
 
 	public double getInterestRate() {
 		return interestRate;
-	}
+	}// end method getInterestRate
 
 	public void setInterestRate(double rate) {
 		interestRate = rate;
-	}
+	}// end method setInterestRate
 
-}
+}// end class SavingAccount
