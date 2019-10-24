@@ -40,13 +40,13 @@ public class CurrentAccount extends Account {
 		if ((avilableOverdrawnLimit) > DEFAULT_OVERDRAWN_LIMIT) {
 			avilableOverdrawnLimit = DEFAULT_OVERDRAWN_LIMIT;	// set the overdrawn limit to the default value
 		}
-	}
+	}// end method credit
 
 	public void setOverdrawnLimit(double input) { // set overdrawn limit
 		availableBalance = input;
-	}
+	}// end method setOverdrawnLimit
 
 	public double getOverdrawnLimit() { // get overdrawn limit
 		return avilableOverdrawnLimit;
-	}
-}
+	}// end method getOverdrawnLimit
+}// end class CurrentAccount
