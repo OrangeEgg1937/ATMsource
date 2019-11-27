@@ -107,11 +107,11 @@ public class Withdrawal extends Transaction
       {
          // display the menu
          screen.displayMessageLine( "\nWithdrawal Menu:" );
-         screen.displayMessageLine( "1 - $100" );
-         screen.displayMessageLine( "2 - $500" );
-         screen.displayMessageLine( "3 - $1000" );
-         screen.displayMessageLine( "6 - Cancel transaction" );
-         screen.displayMessageLine("If other, directly input the values");
+         screen.displayMessage( "1 - $100" );
+         screen.displayMessage( "2 - $500" );
+         screen.displayMessage( "3 - $1000" );
+         screen.displayMessage( "6 - Cancel transaction" );
+         screen.displayMessage("If other, directly input the values");
          int input = keypad.getInput(); // get user input through keypad
 
          
