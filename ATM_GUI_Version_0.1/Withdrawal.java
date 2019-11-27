@@ -112,7 +112,7 @@ public class Withdrawal extends Transaction
          screen.displayMessage( "3 - $1000" );
          screen.displayMessage( "6 - Cancel transaction" );
          screen.displayMessage("If other, directly input the values");
-         int input = keypad.getInput(); // get user input through keypad
+         int input = keypad.getInput("Enter a choice:"); // get user input through keypad
 
          
 // determine how to proceed based on the input value
