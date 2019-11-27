@@ -46,7 +46,7 @@ public class Screen extends JFrame
    // display a dollar amount
    public void displayDollarAmount( double amount )
    {
-      JOptionPane.showMessageDialog(null, "HKD$%,.2f"+amount, title, JOptionPane.INFORMATION_MESSAGE );
+	      JOptionPane.showMessageDialog(null, String.format("HKD$%.2f",amount), title, JOptionPane.INFORMATION_MESSAGE );
    } // end method displayDollarAmount
    
    public void displayReset(){
