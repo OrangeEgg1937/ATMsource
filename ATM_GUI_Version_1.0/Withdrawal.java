@@ -111,7 +111,7 @@ public class Withdrawal extends Transaction
          keypad.setDisable(11);
          keypad.clear();
          screen.displayReset();
-         screen.displayMessageLine( "\nWithdrawal Menu:" );
+         screen.displayMessageLine( "Withdrawal Menu:" );
          screen.displayMessageLine( "1 - $100" );
          screen.displayMessageLine( "2 - $500" );
          screen.displayMessageLine( "3 - $1000" );
