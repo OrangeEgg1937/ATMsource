@@ -44,7 +44,6 @@ public class ATM
          performTransactions(); // user is now authenticated 
          userAuthenticated = false; // reset before next ATM session
          currentAccountNumber = 0; // reset before next ATM session 
-         screen.displayMessageLine( "Thank you! Goodbye!" );
       } // end while   
    } // end method run
 
