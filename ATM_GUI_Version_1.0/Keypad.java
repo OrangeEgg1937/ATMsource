@@ -167,8 +167,6 @@ public class Keypad{
       for (int i = 0; i < numberbuttons.length; i++) {
          numberbuttons[i].setEnabled(false);
       }
-      keyButtons[1].setEnabled(false);
-      keyButtons[2].setEnabled(false);
       isOnline = false;
    }
    
@@ -195,6 +193,14 @@ public class Keypad{
          isOnline = true;
       }
       
+   }
+
+   //overload, enable a specific key
+   public void setEnable(int start, int end){
+         for (int i = start; i <= end; i++) {
+            numberbuttons[i].setEnabled(true);
+         }
+         isOnline = true;
    }
 
    private class ZeroKey implements ActionListener{

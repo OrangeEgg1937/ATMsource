@@ -37,6 +37,7 @@ public class ATM
          // loop while user is not yet authenticated
          while ( !userAuthenticated ) 
          {
+            keypad.setEnable(0);
             screen.displayMessageLine( "Welcome!" );       
             authenticateUser(); // authenticate user
          } // end while
@@ -46,10 +47,17 @@ public class ATM
          currentAccountNumber = 0; // reset before next ATM session 
          screen.displayReset();
          screen.displayMessageLine( "Thank you! Goodbye!" );
-         screen.displayMessageLine("Click OK to exit");
+         screen.displayMessageLine( "" );
+         screen.displayMessageLine( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+         screen.displayMessageLine( "!!! Card rejected !!!  ==>" );
+         screen.displayMessageLine( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+         screen.displayMessageLine("");
+         screen.displayMessageLine( "Remember to take away your card and money" );
+         screen.displayMessageLine("============================================================================");
+         screen.displayMessageLine("Click OK to continuous");
+         keypad.setDisable();
          keypad.clear();
          keypad.waiting();
-         keypad.setEnable(0);
          screen.displayReset();
       } // end while   
    } // end method run
@@ -146,7 +154,7 @@ public class ATM
       screen.displayMessageLine( "2 - Withdraw cash" );
       screen.displayMessageLine( "3 - Transfer funds" );                        
       screen.displayMessageLine( "4 - Exit" );                                
-      screen.displayMessageLine( "Enter a choice: " );            
+      screen.displayMessageLine( "Enter a choice: " );      
       keypad.waiting();
       return keypad.getInput(); // return user's selection
    } // end method displayMainMenu
@@ -167,7 +175,6 @@ public class ATM
          case WITHDRAWAL: // create new Withdrawal transaction
             temp = new Withdrawal( currentAccountNumber, screen, 
                bankDatabase, keypad, cashDispenser );
-
             break; 
 
            

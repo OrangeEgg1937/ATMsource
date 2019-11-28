@@ -109,7 +109,7 @@ public class Withdrawal extends Transaction
          // display the menu
          keypad.setEnable(1);
          keypad.setDisable(11);
-         keypad.waiting();
+         keypad.clear();
          screen.displayReset();
          screen.displayMessageLine( "\nWithdrawal Menu:" );
          screen.displayMessageLine( "1 - $100" );
@@ -117,33 +117,98 @@ public class Withdrawal extends Transaction
          screen.displayMessageLine( "3 - $1000" );
          screen.displayMessageLine( "6 - Cancel transaction" );
          screen.displayMessageLine("If other, directly input the values");
+         keypad.waiting();
          int input = keypad.getInput(); // get user input through keypad
+         screen.displayReset();
+         screen.displayMessageLine( "===================================================================" );
+         keypad.clear();
+         keypad.setDisable();
+         keypad.setEnable(0, 1);
+         int confirmation = 1;  
 
-         
-// determine how to proceed based on the input value
-         switch ( input )
+         switch ( input ) //Confirmation
+         {
+            case 1: 
+            screen.displayMessageLine( "Are you sure withdraw $HKD 100 ?" );
+            screen.displayMessageLine("1 - Yes");
+            screen.displayMessageLine("2 - No");
+            screen.displayMessageLine( "===================================================================" );
+            keypad.waiting();
+            confirmation = keypad.getInput();
+            break;
+            case 2:
+            screen.displayMessageLine( "Are you sure withdraw $HKD 500 ?" );
+            screen.displayMessageLine("1 - Yes");
+            screen.displayMessageLine("2 - No");
+            screen.displayMessageLine( "===================================================================" );
+            keypad.waiting();
+            confirmation = keypad.getInput();
+            break;
+            case 3: 
+            screen.displayMessageLine( "Are you sure withdraw $HKD 1000 ?" );
+            screen.displayMessageLine("1 - Yes");
+            screen.displayMessageLine("2 - No");
+            screen.displayMessageLine( "===================================================================" );
+            keypad.waiting();
+            confirmation = keypad.getInput();
+            break;       
+            default:
+            	if (input%100==0) {
+               userChoice=input;
+               screen.displayMessageLine( "Are you sure withdraw $HKD " + input +" ?");
+               screen.displayMessageLine("1 - Yes");
+               screen.displayMessageLine("2 - No");
+               screen.displayMessageLine( "===================================================================" );
+               keypad.waiting();
+               confirmation = keypad.getInput();
+            	}
+         } // end switch
+
+         if (confirmation == 1) {
+            switch ( input )
          {
             case 1: // if the user chose a withdrawal amount 
             case 2: // (i.e., chose option 1, 2 or 3), return the
             case 3: // corresponding amount from amounts array
                userChoice = amounts[ input ]; // save user's choice
+               keypad.setDisable();
                break;       
             case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
+               keypad.setDisable();
                break;
             default: // the user did not enter a value from 1-3 & 6
             	if (input%100==0) {
                userChoice=input;
+               keypad.setDisable();
             	} // check whether the user's input is divisibe by 100
 		// make sure the ATM can output the money
             	else
             	{
+                  keypad.clear();
+                  keypad.setDisable();
                screen.displayMessageLine( 
                   "\nInvalid selection. Try again." );
-            	}
+               }
+               screen.displayMessageLine( "Loading to the Withdrawal menu..." );
+               screen.displayMessageLine( "Please Click OK to back" );
+               keypad.waiting();
          } // end switch
-      } // end while
-    
+      } else {
+         keypad.clear();
+         keypad.setDisable();
+         screen.displayReset();
+         screen.displayMessageLine( "===================================================================" );
+         screen.displayMessageLine( "                            CANCELED                               " );
+         screen.displayMessageLine( "===================================================================" );
+         screen.displayMessageLine( "Loading to the Withdrawal menu..." );
+         screen.displayMessageLine( "Please Click OK to back" );
+         keypad.waiting();
+         userChoice = 0;
+      }
+      // end while
+         }
+        
       return userChoice; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
    
@@ -168,6 +233,7 @@ public class Withdrawal extends Transaction
 		   c=c+1;	
       }	
      Screen screen = getScreen();
+     keypad.clear();
      screen.displayReset();
      screen.displayMessageLine("You get: ");
      screen.displayMessageLine("HKD$100 x "+Integer.toString(c));
