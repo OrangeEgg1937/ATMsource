@@ -23,7 +23,8 @@ public class Screen extends JFrame
       // initializes GUI components
       showingText = new JTextArea(10,10);
       showingText.setEditable(false);
-      showingText.setBackground(Color.ORANGE);
+      showingText.setBackground(Color.blue);
+      showingText.setForeground(Color.orange);
       button[0] = new JButton("<=");
       button[1] = new JButton("=>");
       eastPanel = new JPanel();
@@ -36,6 +37,7 @@ public class Screen extends JFrame
       setSize(400, 500);
       setVisible(true);
       setLocationRelativeTo(null);
+      setResizable(false);
 
       // Adding components into layout
       eastPanel.add(button[0]);
@@ -45,11 +47,6 @@ public class Screen extends JFrame
       add(showingText, BorderLayout.CENTER);
       add(keypadPanel, BorderLayout.SOUTH);
       setBackground(Color.LIGHT_GRAY);
-   }
-
-   // displays a error message
-   public void displayErroeMessage(String message) {
-      JOptionPane.showMessageDialog(null, message, "ATM Screen",JOptionPane.ERROR_MESSAGE); 
    }
 
    // displays a message without a carriage return
@@ -69,7 +66,7 @@ public class Screen extends JFrame
    // display a dollar amount
    public void displayDollarAmount( double amount )
    {
-     screenText = screenText + "HKD$ "+amount;
+     screenText = screenText + "HKD$ "+ String.format("%.2f", amount);
      showingText();
    } // end method displayDollarAmount
    

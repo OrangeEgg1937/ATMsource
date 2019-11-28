@@ -11,6 +11,7 @@ public class Keypad{
    private boolean sendAction = false;
    private boolean login_state = false;
    private boolean isOnline = true;
+   private boolean isRe_enter = false;
    private String userInput = "";  // for normal input
    private String userInput2 = ""; // for passwords input
    private JPanel keyPadPanel;
@@ -26,10 +27,6 @@ public class Keypad{
    private OK_Key okKey;
    private ZeroKey zKey;
    private DotKey dotkey;
-   public boolean passed = true;
-   public int input1 = 0;
-   public int input2 = 0;
-
 
    //constructor initializes the Keypad
    public Keypad() {
@@ -105,6 +102,10 @@ public class Keypad{
          keyPadPanel.repaint();
       }
       waiting();
+   }
+
+   public void requireEnter(){
+      isRe_enter = true;
    }
 
    //method for login (password part)
@@ -231,8 +232,9 @@ public class Keypad{
       if (userInput != "" && login_state == true) {
          ispasswordField = true;
       } 
-      if (userInput != "" || !isOnline) {
+      if (userInput != "" || !isOnline || isRe_enter) {
          sendAction = true;  
+         isRe_enter = false;
       }
    }
 }
