@@ -153,7 +153,7 @@ public class Withdrawal extends Transaction
             confirmation = keypad.getInput();
             break;       
             default:
-            	if (input%100==0) {
+            	if (input%100==0 && input != 0) {
                userChoice=input;
                screen.displayMessageLine( "Are you sure withdraw $HKD " + input +" ?");
                screen.displayMessageLine("1 - Yes");
@@ -178,7 +178,7 @@ public class Withdrawal extends Transaction
                keypad.setDisable();
                break;
             default: // the user did not enter a value from 1-3 & 6
-            	if (input%100==0) {
+            	if (input%100==0 && input != 0) {
                userChoice=input;
                keypad.setDisable();
             	} // check whether the user's input is divisibe by 100

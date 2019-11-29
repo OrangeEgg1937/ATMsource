@@ -74,19 +74,22 @@ public class Transfer extends Transaction
                         {
                             do
                             {
-                                if (bankDatabase.supportOverdrawn(getAccountNumber())){
-                                    screen.displayMessage("\nThis is current account, the available overdrawn limit: ");
-                                    screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
-                                 }
+
                                 /* 2. Enter transfer amount */
-                                screen.displayMessageLine("\nPlease enter the transfer amount: ");
-                                screen.displayMessageLine("\n0 - Cancel transaction\n");
-                                
+
                                 do {
+                                    if (bankDatabase.supportOverdrawn(getAccountNumber())){
+                                        screen.displayMessage("\nThis is current account, the available overdrawn limit: \n");
+                                        screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
+                                        screen.displayMessageLine("");
+                                     }
+                                    screen.displayMessageLine("\nPlease enter the transfer amount: ");
+                                    screen.displayMessageLine("\n0 - Cancel transaction\n");
                                     keypad.clear();
                                     keypad.setEnable(1);
                                     keypad.waiting();
-                                	amount = keypad.getAmount();
+                                    amount = keypad.getAmount();
+                                    screen.displayReset();
                                 	if (amount < 0)
                                 		screen.displayMessageLine("\nInvalid input. Try again.\n" );
                                 }while (amount < 0);
@@ -142,7 +145,13 @@ public class Transfer extends Transaction
                                                     else if (input == 0)
                                                         screen.displayMessageLine("\nPlease take your debit card now." );
                                                     else
-                                                        {screen.displayMessageLine("\nInvalid selection. Try again.");
+                                                        {
+                                                         screen.displayReset();
+                                                         screen.displayMessageLine("Invalid selection. Try again.");
+                                                         screen.displayMessageLine("Click OK to continuous");
+                                                         screen.displayMessageLine("\nTransfer succeed. Do you need receipt?");
+                                                         screen.displayMessageLine("\n1 - Yes");
+                                                         screen.displayMessageLine("0 - No\n");
                                                          keypad.clear() ;
                                                          keypad.waiting(); 
                                                          input = keypad.getInput();

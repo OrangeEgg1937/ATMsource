@@ -35,7 +35,7 @@ public class BalanceInquiry extends Transaction
       screen.displayDollarAmount( totalBalance );
       // Display available overdraw amount if it is current account
       if (bankDatabase.supportOverdrawn(getAccountNumber())){
-         screen.displayMessageLine("\n\n - Overdraw limit: ");
+         screen.displayMessageLine("\n\n - Overdraw limit: \n");
          screen.displayDollarAmount(bankDatabase.accountOverdrawnLimit(getAccountNumber()));
       }
    } // end method execute

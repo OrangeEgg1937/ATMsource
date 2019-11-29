@@ -160,7 +160,24 @@ public class Keypad{
    }
 
    public double getAmount(){
-      return Double.parseDouble(userInput);
+      if (userInput.substring(0, 1) == ".") {
+         String temp = "0";
+         temp = temp + userInput;
+         try {
+            return Double.parseDouble(temp);
+         } catch (Exception e) {
+            return -1;
+            //TODO: handle exception
+         }
+      }else
+      {
+         try {
+            return Double.parseDouble(userInput);
+         } catch (Exception e) {
+            return -1;
+            //TODO: handle exception
+         }
+      }
    }
    //set the number pad disable
    public void setDisable(){
@@ -283,10 +300,10 @@ public class Keypad{
    private class Backspace implements ActionListener
    {
       public void actionPerformed(ActionEvent event) { 
-         if (ispasswordField && userInput2 != "") {
+         if (ispasswordField && userInput2 != "" && userInput2.length() != 0) {
             userInput2 = userInput2.substring(0, userInput2.length()-1);
             passwordField.setText(userInput2);
-         }else if(userInput != ""){
+         }else if(userInput != "" && userInput.length() != 0 ){
             userInput = userInput.substring(0, userInput.length()-1);
             userInputField.setText(userInput);
          }
