@@ -68,16 +68,19 @@ public class Withdrawal extends Transaction
 
                   // instruct user to take cash
                   showMoney();
+                  screen.displayReset();
                   screen.displayMessageLine( 
                      "\nPlease take your cash now." );
                } // end if
                else // cash dispenser does not have enough cash
+               screen.displayReset();
                   screen.displayMessageLine( 
                      "\nInsufficient cash available in the ATM." +
                      "\n\nPlease choose a smaller amount." );
             } // end if
             else // not enough money available in user's account
             {
+               screen.displayReset();
                screen.displayMessageLine( 
                   "\nInsufficient funds in your account." +
                   "\n\nPlease choose a smaller amount." );
@@ -85,6 +88,7 @@ public class Withdrawal extends Transaction
          } // end if
          else // user chose cancel menu option 
          {
+            screen.displayReset();
             screen.displayMessageLine( "\nCanceling transaction..." );
             
             return; // return to main menu because user canceled
@@ -110,7 +114,6 @@ public class Withdrawal extends Transaction
          keypad.setEnable(1);
          keypad.setDisable(11);
          keypad.clear();
-         screen.displayReset();
          screen.displayMessageLine( "Withdrawal Menu:" );
          screen.displayMessageLine( "1 - $100" );
          screen.displayMessageLine( "2 - $500" );
@@ -193,6 +196,7 @@ public class Withdrawal extends Transaction
                screen.displayMessageLine( "Loading to the Withdrawal menu..." );
                screen.displayMessageLine( "Please Click OK to back" );
                keypad.waiting();
+               screen.displayReset();
          } // end switch
       } else {
          keypad.clear();
@@ -203,6 +207,7 @@ public class Withdrawal extends Transaction
          screen.displayMessageLine( "===================================================================" );
          screen.displayMessageLine( "Loading to the Withdrawal menu..." );
          screen.displayMessageLine( "Please Click OK to back" );
+         screen.displayReset();
          keypad.waiting();
          userChoice = 0;
       }
