@@ -142,7 +142,11 @@ public class Transfer extends Transaction
                                                     else if (input == 0)
                                                         screen.displayMessageLine("\nPlease take your debit card now." );
                                                     else
-                                                        screen.displayMessageLine("\nInvalid selection. Try again.");
+                                                        {screen.displayMessageLine("\nInvalid selection. Try again.");
+                                                         keypad.clear() ;
+                                                         keypad.waiting(); 
+                                                         input = keypad.getInput();
+                                                        }
                                                 } while (input > 1);
                                             }
                                             case 2:
