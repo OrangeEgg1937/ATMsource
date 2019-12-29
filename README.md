@@ -21,5 +21,10 @@
 - [X] [*Debug*] Add a new function – transfer (for transferring fund from one bank account to another
       bank account)
 
-# The division of job duties
+# How to run
+  - For GUI version, please download the ATM_GUI_Version_1.0 version
+  - For CLI version, please download the ATMsource version
+  - Run the java file ATMTestCase
 
+# GUI display
+  ![N|Solid](https://imgur.com/a/tgKWqgg)
