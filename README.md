@@ -27,4 +27,4 @@
   - Run the java file ATMTestCase
 
 # GUI display
-  ![N|Solid](https://imgur.com/a/tgKWqgg)
+![N|Solid](https://i.imgur.com/NoER41b.png)
